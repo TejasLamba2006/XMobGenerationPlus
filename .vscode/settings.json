@@ -1,4 +1,5 @@
 {
-    "zencoder.enableRepoIndexing": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+  "zencoder.enableRepoIndexing": true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic"
 }
