@@ -3,6 +3,7 @@ package com.xmobgeneration.managers.spawn;
 import com.xmobgeneration.XMobGeneration;
 import com.xmobgeneration.models.SpawnArea;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -35,7 +36,7 @@ public class BossSpawnHandler {
 
             bossUUIDs.remove(areaName);
             cancelRespawnTask(areaName);
-            
+
             SpawnArea area = plugin.getAreaManager().getArea(areaName);
             if (area != null && area.isEnabled() && !isRespawning.getOrDefault(areaName, false)) {
                 // Clear any external mobs in the area
@@ -88,28 +89,28 @@ public class BossSpawnHandler {
 
             if (area.isMythicMob()) {
                 entity = plugin.getMythicMobsManager().spawnMythicMob(
-                    area.getMythicMobType(),
-                    spawnLoc,
-                    area.getMobStats().getLevel()
-                );
+                        area.getMythicMobType(),
+                        spawnLoc,
+                        area.getMobStats().getLevel());
             } else {
                 entity = spawnLoc.getWorld().spawnEntity(spawnLoc, area.getMobType());
             }
 
             if (entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
-                
+
                 if (!area.isMythicMob()) {
-                    livingEntity.setMaxHealth(area.getMobStats().getHealth());
+                    livingEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH)
+                            .setBaseValue(area.getMobStats().getHealth());
                     livingEntity.setHealth(area.getMobStats().getHealth());
                     livingEntity.setCustomName(area.getMobStats().getDisplayName());
                     livingEntity.setCustomNameVisible(true);
                 }
-                
+
                 livingEntity.setMetadata("isBoss", new FixedMetadataValue(plugin, true));
                 livingEntity.setMetadata("areaName", new FixedMetadataValue(plugin, area.getName()));
                 livingEntity.setMetadata("mobDamage", new FixedMetadataValue(plugin, area.getMobStats().getDamage()));
-                
+
                 plugin.getSpawnManager().getMobTracker().trackMob(entity, area.getName(), spawnLoc);
                 bossUUIDs.put(area.getName(), entity.getUniqueId());
             }

@@ -30,4 +30,16 @@ public class ConfigManager {
     public FileConfiguration getConfig() {
         return config;
     }
+
+    public boolean isMobContainmentEnabled() {
+        return config.getBoolean("settings.mob-containment-enabled", true);
+    }
+
+    public boolean doPassiveMobsAttackPlayers() {
+        return config.getBoolean("settings.passive-mobs-attack-players", true);
+    }
+
+    public int getHealthUpdateInterval() {
+        return config.getInt("settings.health-update-interval", 10);
+    }
 }

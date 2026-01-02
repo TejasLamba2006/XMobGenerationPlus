@@ -1,4 +1,24 @@
-# XMobGeneration Changelog
+# XMobGenerationPlus Changelog
+
+## Version 2.0.0 (2025-12-30)
+
+### Major Update - Fork Release
+- **Project Fork**: Forked from archived XMobGeneration by Akar1881
+- **Renamed**: Project renamed to XMobGenerationPlus
+
+### API & Version Updates
+- **Java 21**: Updated minimum Java version to 21
+- **Minecraft 1.21+**: Updated target to Minecraft 1.21+
+- **Spigot API**: Updated to 1.21-R0.1-SNAPSHOT
+- **WorldEdit**: Updated to 7.3.9
+- **MythicMobs**: Updated to 5.7.2
+- **Maven Plugins**: Updated maven-compiler-plugin to 3.13.0, maven-shade-plugin to 3.6.0
+
+### Technical Changes
+- **Deprecated API Fix**: Replaced deprecated `setMaxHealth()` with `getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue()` for 1.21 compatibility
+- **Modern Build**: Full Maven project structure with updated dependencies
+
+---
 
 ## Version 1.9.0 (2025-06-11)
 

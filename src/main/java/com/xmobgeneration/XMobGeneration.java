@@ -28,7 +28,7 @@ public class XMobGeneration extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        
+
         // Initialize managers in correct order
         this.configManager = new ConfigManager(this);
         this.mythicMobsManager = new MythicMobsManager(this);
@@ -52,7 +52,7 @@ public class XMobGeneration extends JavaPlugin {
             getLogger().info("MythicMobs support enabled!");
         }
 
-        getLogger().info("XMobGeneration has been enabled!");
+        getLogger().info("XMobGenerationPlus has been enabled!");
     }
 
     @Override
@@ -61,26 +61,26 @@ public class XMobGeneration extends JavaPlugin {
         if (restartManager != null) {
             restartManager.stop();
         }
-        
+
         // Stop all spawn tasks and despawn mobs
         for (SpawnArea area : areaManager.getAllAreas().values()) {
             spawnManager.stopSpawning(area.getName());
             spawnManager.getMobTracker().despawnAreaMobs(area.getName());
         }
-        
+
         // Save all areas
         areaManager.saveAreas();
-        
+
         // Clear all boss tracking
         for (SpawnArea area : areaManager.getAllAreas().values()) {
             if (area.isBossArea()) {
                 spawnManager.getBossSpawnHandler().removeBossTracking(area.getName());
             }
         }
-        
+
         // Cancel all Bukkit tasks
         Bukkit.getScheduler().cancelTasks(this);
-        
+
         // Clear all managers
         spawnManager = null;
         areaManager = null;
@@ -89,19 +89,19 @@ public class XMobGeneration extends JavaPlugin {
         guiManager = null;
         mythicMobsManager = null;
 
-        getLogger().info("XMobGeneration has been disabled!");
+        getLogger().info("XMobGenerationPlus has been disabled!");
     }
 
     private void registerListeners() {
-        // Register all event listeners
         getServer().getPluginManager().registerEvents(new MobDamageListener(this), this);
         getServer().getPluginManager().registerEvents(new MobDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new MobSpawnListener(this), this);
         getServer().getPluginManager().registerEvents(new MobContainmentListener(this), this);
+        getServer().getPluginManager().registerEvents(new MobHealthListener(this), this);
         getServer().getPluginManager().registerEvents(new BossWandListener(this), this);
         getServer().getPluginManager().registerEvents(new AreaSelectionListener(this), this);
         getServer().getPluginManager().registerEvents(new GUIListener(this), this);
-        getServer().getPluginManager().registerEvents(new CustomDropsMenuListener(this), this);
+        getServer().getPluginManager().registerEvents(new BossDamageListener(this), this);
     }
 
     public static XMobGeneration getInstance() {

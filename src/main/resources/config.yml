@@ -3,6 +3,9 @@ settings:
   default-spawn-count: 5
   default-respawn-delay: 30
   restart-interval: 10
+  mob-containment-enabled: true
+  passive-mobs-attack-players: true
+  health-update-interval: 10
 
 messages:
   prefix: "&8[&bXMobGeneration&8] &7"

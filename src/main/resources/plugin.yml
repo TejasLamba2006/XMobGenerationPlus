@@ -1,18 +1,18 @@
-name: XMobGeneration
-version: 1.9
+name: XMobGenerationPlus
+version: 2.0.0
 main: com.xmobgeneration.XMobGeneration
-api-version: 1.17
+api-version: 1.21
 depend: [WorldEdit]
 softdepend: [MythicMobs]
 commands:
   xmg:
-    description: Main command for XMobGeneration plugin
+    description: Main command for XMobGenerationPlus plugin
     usage: /<command> [subcommand] [args]
     aliases: [xmobgen]
 permissions:
-      xmg.admin:
-        description: Allows access to all XMobGeneration commands
-        default: op
-      xmg.boss:
-        description: Allows access to boss-related commands
-        default: op
+  xmg.admin:
+    description: Allows access to all XMobGenerationPlus commands
+    default: op
+  xmg.boss:
+    description: Allows access to boss-related commands
+    default: op

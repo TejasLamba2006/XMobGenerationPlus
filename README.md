@@ -1,6 +1,8 @@
-# XMobGeneration
+# XMobGenerationPlus
 
 A powerful Minecraft plugin for managing custom mob spawn areas with an intuitive GUI interface.
+
+> **Note**: This is a fork of the archived [XMobGeneration](https://github.com/Akar1881/XMobGeneration) plugin by Akar1881. This version adds continued support and updates for newer Minecraft versions.
 
 ## Features
 
@@ -46,9 +48,14 @@ A powerful Minecraft plugin for managing custom mob spawn areas with an intuitiv
 
 ## Requirements
 
-- Spigot/Paper 1.17+
+- Spigot/Paper 1.21+ (Java 21 required)
 - WorldEdit plugin
 - MythicMobs (Optional) - For spawning custom MythicMobs
+
+## Supported Versions
+
+- Minecraft 1.21.x (Primary target)
+- May work on 1.20.x+ (not officially supported)
 
 ## Installation
 
@@ -116,8 +123,14 @@ Note: Version 1.7.0 and above will work perfectly fine without MythicMobs instal
 ## Support
 
 If you encounter any issues or have questions:
+
 1. Check the [Issues](https://github.com/Akar1881/XMobGeneration/issues) page
 2. Create a new issue if your problem isn't already listed
+
+## Credits
+
+- Original plugin by [Akar1881](https://github.com/Akar1881)
+- Fork maintained for continued support on newer Minecraft versions
 
 ## License
 

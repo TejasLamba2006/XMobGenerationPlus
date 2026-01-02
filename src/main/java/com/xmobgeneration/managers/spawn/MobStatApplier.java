@@ -1,6 +1,7 @@
 package com.xmobgeneration.managers.spawn;
 
 import com.xmobgeneration.models.SpawnArea;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.metadata.FixedMetadataValue;
 import com.xmobgeneration.XMobGeneration;
@@ -11,10 +12,10 @@ public class MobStatApplier {
             entity.setCustomName(area.getMobStats().getDisplayName());
             entity.setCustomNameVisible(true);
         }
-        
-        entity.setMaxHealth(area.getMobStats().getHealth());
+
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(area.getMobStats().getHealth());
         entity.setHealth(area.getMobStats().getHealth());
-        entity.setMetadata("mobDamage", 
-            new FixedMetadataValue(XMobGeneration.getInstance(), area.getMobStats().getDamage()));
+        entity.setMetadata("mobDamage",
+                new FixedMetadataValue(XMobGeneration.getInstance(), area.getMobStats().getDamage()));
     }
 }
